@@ -1,7 +1,10 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 
 function CarList() {
-  return <div>CarList</div>
+  const { cars } = useSelector((state) => state.cars.cars)
+  console.log(cars)
+  return <>CarList</>
 }
 
 export default CarList
