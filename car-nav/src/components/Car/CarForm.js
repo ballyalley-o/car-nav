@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { changeName, changeCost, addCar } from '../../store'
 // constants
 import { FORMLABELS, TITLES, BUTTONS } from '../../constants/form'
+// styles
+import { StyledButton } from '../../assets/styles/car-form-styles'
 
 function CarForm() {
   const { name, cost } = useSelector((state) => state.form)
@@ -60,7 +62,9 @@ function CarForm() {
           </div>
         </div>
         <div className='field'>
-          <button className='is-link'>{BUTTONS.SUBMIT}</button>
+          <button type='submit' className={StyledButton}>
+            {BUTTONS.SUBMIT}
+          </button>
         </div>
       </form>
     </div>

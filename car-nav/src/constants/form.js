@@ -11,7 +11,9 @@ export const FORMLABELS = {
 }
 
 export const TITLES = {
+  BRAND: 'Car Depot',
   ADD_CAR: 'Add a Car',
+  SEARCH_CAR: 'Search for a Car',
 }
 
 export const BUTTONS = {

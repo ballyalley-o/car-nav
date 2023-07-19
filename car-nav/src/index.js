@@ -1,3 +1,6 @@
+// styles
+import 'bulma/css/bulma.min.css'
+import './assets/css/styles.css'
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 // redux
