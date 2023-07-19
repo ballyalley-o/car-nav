@@ -3,7 +3,10 @@ import { useSelector, useDispatch } from 'react-redux'
 import { AiFillCloseCircle } from 'react-icons/ai'
 import { removeCar } from '../../store/slices/car-slice'
 // styles
-import { StyledDangerButton } from '../../assets/styles/car-form-styles'
+import {
+  StyledDangerButton,
+  StyledCarBanner,
+} from '../../assets/styles/car-form-styles'
 
 function CarList() {
   const cars = useSelector((state) => state.cars.list)
@@ -15,17 +18,22 @@ function CarList() {
 
   const renderedCars = cars.map((car) => {
     return (
-      <div key={cars.id} className='panel'>
-        <p>
-          {car.name} - NZD {car.cost}
-        </p>
-        <button
-          className={StyledDangerButton}
-          onClick={() => handleDeleteCar(car)}
-        >
-          <AiFillCloseCircle />
-        </button>
-      </div>
+      <>
+        <div className={StyledCarBanner}>
+          <p className='badge toggle__label'>latest</p>
+        </div>
+        <div key={cars.id} className='panel'>
+          <p>
+            {car.name} - NZD <b>{car.cost}</b>
+          </p>
+          <button
+            className={StyledDangerButton}
+            onClick={() => handleDeleteCar(car)}
+          >
+            <AiFillCloseCircle />
+          </button>
+        </div>
+      </>
     )
   })
 

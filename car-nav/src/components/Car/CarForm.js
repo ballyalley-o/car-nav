@@ -42,8 +42,6 @@ function CarForm() {
     }
     dispatch(addCar({ name, cost }))
     toast.success(SNACKS.SUCCESS)
-    dispatch(changeName(''))
-    dispatch(changeCost(0))
   }
   return (
     <div className={StyledCarFormDiv}>

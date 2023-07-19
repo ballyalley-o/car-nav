@@ -34,6 +34,9 @@ export const StyledField = classNames('field')
 
 // @root - CarList
 export const StyledDangerButton = classNames('button is-danger')
+export const StyledCarBanner = classNames(
+  'is-block has-background-success is-border is-size-0.2 is-uppercase is-flex is-justify-content-center is-align-items-center '
+)
 
 // @options -----------------------------------------------
 export const toastOptions = {
