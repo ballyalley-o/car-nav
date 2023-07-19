@@ -4,9 +4,17 @@ import { useDispatch, useSelector } from 'react-redux'
 // store
 import { changeName, changeCost, addCar } from '../../store'
 // constants
-import { FORMLABELS, TITLES, BUTTONS } from '../../constants/form'
+import { FORMLABELS, TITLES, BUTTONS, SNACKS } from '../../constants/form'
 // styles
-import { StyledButton } from '../../assets/styles/car-form-styles'
+import {
+  StyledButton,
+  StyledAddCarLabel,
+  StyledCarFormDiv,
+  StyledField,
+} from '../../assets/styles/car-form-styles'
+// components
+import FormField from '../Form/FormField'
+import { toast } from 'react-toastify'
 
 function CarForm() {
   const { name, cost } = useSelector((state) => state.form)
@@ -26,42 +34,35 @@ function CarForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+
+    if (!name || !cost) {
+      toast.error(SNACKS.ERROR)
+      return
+    }
     dispatch(addCar({ name, cost }))
+    toast.success(SNACKS.SUCCESS)
+    dispatch(changeName(''))
+    dispatch(changeCost(0))
   }
   return (
-    <div className='car-form panel'>
-      <h4 className='subtitle is-3'>{TITLES.ADD_CAR}</h4>
+    <div className={StyledCarFormDiv}>
+      <h4 className={StyledAddCarLabel}>{TITLES.ADD_CAR}</h4>
       <form onSubmit={handleSubmit}>
         {/* name */}
-        <div className='field-group'>
-          <div className='field'>
-            <label htmlFor='' className='label'>
-              {FORMLABELS.NAME.label}
-            </label>
-            <input
-              type='text'
-              className='input is-expanded'
-              value={name}
-              onChange={handleChangeName}
-            />
-          </div>
-        </div>
+        <FormField
+          label={FORMLABELS.NAME.label}
+          value={name}
+          onChange={handleChangeName}
+        />
 
         {/* cost */}
-        <div className='field-group'>
-          <div className='field'>
-            <label htmlFor='' className='label'>
-              {FORMLABELS.COST.label}
-            </label>
-            <input
-              type='number'
-              className='input is-expanded'
-              value={cost || ''}
-              onChange={handleChangeCost}
-            />
-          </div>
-        </div>
-        <div className='field'>
+        <FormField
+          label={FORMLABELS.COST.label}
+          value={cost}
+          onChange={handleChangeCost}
+        />
+
+        <div className={StyledField}>
           <button type='submit' className={StyledButton}>
             {BUTTONS.SUBMIT}
           </button>

@@ -1,6 +1,6 @@
 import classNames from 'classnames'
 
-// components--------------------------------------------------
+// components---------------------------------------------
 
 // @root - Container
 export const StyledContainer = classNames('container')
@@ -26,3 +26,16 @@ export const StyledBrandText = classNames(
 
 // @root - CarForm - page
 export const StyledButton = classNames('button', 'is-primary button is-link')
+export const StyledAddCarLabel = classNames('subtitle is-3')
+export const StyledCarFormDiv = classNames('car-form panel')
+export const StyledInputDiv = classNames('input is-expanded')
+export const StyledFieldGroup = classNames('field-group')
+export const StyledField = classNames('field')
+
+// @options -----------------------------------------------
+export const toastOptions = {
+  position: 'top-center',
+  autoClose: 2000,
+  hideProgressBar: false,
+  newestOnTop: false,
+}

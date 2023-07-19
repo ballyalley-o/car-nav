@@ -19,3 +19,8 @@ export const TITLES = {
 export const BUTTONS = {
   SUBMIT: 'Submit',
 }
+
+export const SNACKS = {
+  ERROR: 'Fill out all fields',
+  SUCCESS: 'Car added',
+}
