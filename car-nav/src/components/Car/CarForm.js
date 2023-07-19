@@ -11,6 +11,7 @@ import {
   StyledAddCarLabel,
   StyledCarFormDiv,
   StyledField,
+  toastOptions,
 } from '../../assets/styles/car-form-styles'
 // components
 import FormField from '../Form/FormField'
@@ -58,7 +59,7 @@ function CarForm() {
         {/* cost */}
         <FormField
           label={FORMLABELS.COST.label}
-          value={cost}
+          value={cost || ''}
           onChange={handleChangeCost}
         />
 

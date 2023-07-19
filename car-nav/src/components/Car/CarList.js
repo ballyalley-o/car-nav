@@ -2,6 +2,8 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { AiFillCloseCircle } from 'react-icons/ai'
 import { removeCar } from '../../store/slices/car-slice'
+// styles
+import { StyledDangerButton } from '../../assets/styles/car-form-styles'
 
 function CarList() {
   const cars = useSelector((state) => state.cars.list)
@@ -18,7 +20,7 @@ function CarList() {
           {car.name} - NZD {car.cost}
         </p>
         <button
-          className='button is-danger'
+          className={StyledDangerButton}
           onClick={() => handleDeleteCar(car)}
         >
           <AiFillCloseCircle />
