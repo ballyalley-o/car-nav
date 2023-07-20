@@ -24,3 +24,8 @@ export const SNACKS = {
   ERROR: 'Fill out all fields',
   SUCCESS: 'Car added',
 }
+
+export const REGEX = {
+  COMMA: /,/g,
+  COMMA_PRICE: /\B(?=(\d{3})+(?!\d))/g,
+}

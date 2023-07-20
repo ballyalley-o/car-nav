@@ -1,15 +1,18 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { AiFillCloseCircle } from 'react-icons/ai'
 import { removeCar } from '../../store/slices/car-slice'
+import { AiFillCloseCircle } from 'react-icons/ai'
 // styles
-import {
-  StyledDangerButton,
-  StyledCarBanner,
-} from '../../assets/styles/car-form-styles'
+import { StyledDangerButton } from '../../assets/styles/car-form-styles'
+// utils
+import { formatPrice } from '../util/formatPrice'
 
 function CarList() {
-  const cars = useSelector((state) => state.cars.list)
+  const cars = useSelector(({ cars: { list, searchTerm } }) =>
+    list.filter((car) =>
+      car.name.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+  )
   const dispatch = useDispatch()
 
   const handleDeleteCar = (car) => {
@@ -19,12 +22,9 @@ function CarList() {
   const renderedCars = cars.map((car) => {
     return (
       <>
-        <div className={StyledCarBanner}>
-          <p className='badge toggle__label'>latest</p>
-        </div>
-        <div key={cars.id} className='panel'>
+        <div key={car.id} className='panel'>
           <p>
-            {car.name} - NZD <b>{car.cost}</b>
+            {car.name} - NZD <b>{formatPrice(car.cost)}</b>
           </p>
           <button
             className={StyledDangerButton}

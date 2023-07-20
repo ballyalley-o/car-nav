@@ -11,7 +11,6 @@ import {
   StyledAddCarLabel,
   StyledCarFormDiv,
   StyledField,
-  toastOptions,
 } from '../../assets/styles/car-form-styles'
 // components
 import FormField from '../Form/FormField'
