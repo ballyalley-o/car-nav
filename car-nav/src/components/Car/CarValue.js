@@ -1,24 +1,13 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+import filterFunction from '../util/filterFunction'
 // utils
 import { formatPrice, removeComma } from '../util/formatPrice'
 
 function CarValue() {
-  const totalCost = useSelector(({ cars: { list, searchTerm } }) => {
-    const filteredCars = list?.filter((car) =>
-      car?.name.toLowerCase().includes(searchTerm?.toLowerCase())
-    )
-
-    console.log('car.cost', filteredCars)
-    let cost = 0
-    for (let i = 0; i < filteredCars?.length; i++) {
-      cost += filteredCars[i]?.cost
-    }
-    console.log('1', filteredCars?.length)
-    return cost
-  })
-
-  // remove the commas from the number
+  const totalCost = useSelector(({ cars: { list, searchTerm } }) =>
+    filterFunction(list, searchTerm).reduce((acc, car) => acc + car.cost, 0)
+  )
   return (
     <div className='car-value'>
       Total Cost: NZD <b>{formatPrice(totalCost)}</b>

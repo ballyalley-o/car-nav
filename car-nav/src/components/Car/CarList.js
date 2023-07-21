@@ -6,12 +6,11 @@ import { AiFillCloseCircle } from 'react-icons/ai'
 import { StyledDangerButton } from '../../assets/styles/car-form-styles'
 // utils
 import { formatPrice } from '../util/formatPrice'
+import filterFunction from '../util/filterFunction'
 
 function CarList() {
   const cars = useSelector(({ cars: { list, searchTerm } }) =>
-    list.filter((car) =>
-      car.name.toLowerCase().includes(searchTerm.toLowerCase())
-    )
+    filterFunction(list, searchTerm)
   )
   const dispatch = useDispatch()
 
