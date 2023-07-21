@@ -19,21 +19,19 @@ function CarList() {
     dispatch(removeCar(car))
   }
 
-  const renderedCars = cars.map((car) => {
+  const renderedCars = cars?.map((car) => {
     return (
-      <>
-        <div key={car.id} className='panel'>
-          <p>
-            {car.name} - NZD <b>{formatPrice(car.cost)}</b>
-          </p>
-          <button
-            className={StyledDangerButton}
-            onClick={() => handleDeleteCar(car)}
-          >
-            <AiFillCloseCircle />
-          </button>
-        </div>
-      </>
+      <div key={car.id} className='panel'>
+        <p>
+          {car.name} - NZD <b>{formatPrice(car.cost)}</b>
+        </p>
+        <button
+          className={StyledDangerButton}
+          onClick={() => handleDeleteCar(car)}
+        >
+          <AiFillCloseCircle />
+        </button>
+      </div>
     )
   })
 
